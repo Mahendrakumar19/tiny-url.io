@@ -70,51 +70,42 @@ export default function Dashboard() {
   );
 
   return (
-    <div className="min-h-screen gradient-bg">
-      <header className="glass shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="min-h-screen gradient-bg flex flex-col">
+      <header className="glass shadow-sm flex-shrink-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-              <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
               </svg>
             </div>
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">TinyLink</h1>
-              <p className="text-gray-600 mt-1">Shorten, Share, Track</p>
+              <h1 className="text-2xl font-bold text-blue-600">TinyLink</h1>
+              <p className="text-sm text-gray-500">Shorten, Share, Track</p>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="space-y-8">
+      <main className="flex-1 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="space-y-6">
           {/* Add Link Form */}
-          <div className="glass rounded-2xl shadow-xl p-8 hover-lift animate-slide-in">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-lg">✨</span>
-              </div>
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Create New Short Link</h2>
-            </div>
+          <div className="glass rounded-lg shadow-sm p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-5">✨ Create New Short Link</h2>
             <AddLinkForm onSuccess={handleLinkAdded} />
           </div>
 
           {/* Links Table */}
-          <div className="glass rounded-2xl shadow-xl p-8 hover-lift animate-slide-in" style={{animationDelay: '0.1s'}}>
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-lg">🔗</span>
-                </div>
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Your Links</h2>
-              </div>
+          <div className="glass rounded-lg shadow-sm p-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5">
+              <h2 className="text-xl font-semibold text-gray-900">🔗 Your Links</h2>
               <input
                 type="text"
-                placeholder="🔍 Search by code or URL..."
+                placeholder="Search by code or URL..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="px-5 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent w-full sm:w-80 transition-all shadow-sm hover:shadow-md"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full sm:w-80 text-sm"
               />
             </div>
 
@@ -148,14 +139,15 @@ export default function Dashboard() {
             )}
           </div>
         </div>
+        </div>
       </main>
 
-      <footer className="glass mt-12 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
-          <p className="text-gray-700 font-medium">
-            Made with <span className="text-red-500 animate-pulse-slow">❤️</span> by TinyLink
+      <footer className="glass mt-auto flex-shrink-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
+          <p className="text-gray-600 text-sm">
+            Made with ❤️ by TinyLink
           </p>
-          <p className="text-gray-500 text-sm mt-1">© 2025 - Shorten URLs with Style</p>
+          <p className="text-gray-400 text-xs mt-1">© 2025 - Shorten URLs with Style</p>
         </div>
       </footer>
     </div>

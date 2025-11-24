@@ -120,8 +120,8 @@ export default function StatsPage() {
   const shortUrl = `${baseUrl}/${link.code}`;
 
   return (
-    <div className="min-h-screen gradient-bg">
-      <header className="glass shadow-lg">
+    <div className="min-h-screen gradient-bg flex flex-col">
+      <header className="glass shadow-lg shrink-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -143,8 +143,9 @@ export default function StatsPage() {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="glass rounded-2xl shadow-2xl overflow-hidden animate-slide-in">
+      <main className="flex-1 w-full">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="glass rounded-2xl shadow-2xl overflow-hidden animate-slide-in">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-8 py-10 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -243,9 +244,10 @@ export default function StatsPage() {
             </div>
           </div>
         </div>
+        </div>
       </main>
 
-      <footer className="glass mt-12 shadow-lg">
+      <footer className="glass mt-auto shrink-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
           <p className="text-gray-700 font-medium">
             Made with <span className="text-red-500 animate-pulse-slow">❤️</span> by TinyLink
