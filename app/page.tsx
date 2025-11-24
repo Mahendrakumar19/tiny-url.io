@@ -87,17 +87,17 @@ export default function Dashboard() {
         </div>
       </header>
 
-      <main className="flex-1 w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="space-y-6">
+      <main className="flex-1 w-full py-8">
+        <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-6 h-full flex flex-col">
           {/* Add Link Form */}
-          <div className="glass rounded-lg shadow-sm p-6">
+          <div className="glass rounded-lg shadow-sm p-6 shrink-0">
             <h2 className="text-xl font-semibold text-gray-900 mb-5">✨ Create New Short Link</h2>
             <AddLinkForm onSuccess={handleLinkAdded} />
           </div>
 
           {/* Links Table */}
-          <div className="glass rounded-lg shadow-sm p-6">
+          <div className="glass rounded-lg shadow-sm p-6 flex-1 flex flex-col min-h-0">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5">
               <h2 className="text-xl font-semibold text-gray-900">🔗 Your Links</h2>
               <input
@@ -109,34 +109,38 @@ export default function Dashboard() {
               />
             </div>
 
-            {loading ? (
-              <div className="text-center py-12">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-                <p className="text-gray-600 mt-2">Loading links...</p>
-              </div>
-            ) : filteredLinks.length === 0 ? (
-              <div className="text-center py-12">
-                <svg
-                  className="mx-auto h-12 w-12 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                  />
-                </svg>
-                <h3 className="mt-2 text-sm font-medium text-gray-900">No links found</h3>
-                <p className="mt-1 text-sm text-gray-500">
-                  {searchTerm ? 'Try a different search term' : 'Get started by creating a new short link'}
-                </p>
-              </div>
-            ) : (
-              <LinksTable links={filteredLinks} onDelete={handleDelete} />
-            )}
+            <div className="flex-1 min-h-0 flex items-center justify-center">
+              {loading ? (
+                <div className="text-center py-12">
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                  <p className="text-gray-600 mt-2">Loading links...</p>
+                </div>
+              ) : filteredLinks.length === 0 ? (
+                <div className="text-center py-12">
+                  <svg
+                    className="mx-auto h-16 w-16 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                    />
+                  </svg>
+                  <h3 className="mt-4 text-lg font-semibold text-gray-900">No links found</h3>
+                  <p className="mt-2 text-gray-500">
+                    {searchTerm ? 'Try a different search term' : 'Get started by creating a new short link above'}
+                  </p>
+                </div>
+              ) : (
+                <div className="w-full overflow-auto">
+                  <LinksTable links={filteredLinks} onDelete={handleDelete} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
         </div>
